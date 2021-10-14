@@ -101,15 +101,27 @@ WSGI_APPLICATION = 'DjangoBlog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DJANGO_MYSQL_DATABASE') or 'djangoblog',
-        'USER': os.environ.get('DJANGO_MYSQL_USER') or 'root',
-        'PASSWORD': os.environ.get('DJANGO_MYSQL_PASSWORD') or 'djangoblog_123',
-        'HOST': os.environ.get('DJANGO_MYSQL_HOST') or '127.0.0.1',
-        'PORT': int(
-            os.environ.get('DJANGO_MYSQL_PORT') or 3306),
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': os.environ.get('DJANGO_MYSQL_DATABASE') or 'djangoblog',
+        # 'USER': os.environ.get('DJANGO_MYSQL_USER') or 'root',
+        # 'PASSWORD': os.environ.get('DJANGO_MYSQL_PASSWORD') or 'djangoblog_123',
+        # 'HOST': os.environ.get('DJANGO_MYSQL_HOST') or '127.0.0.1',
+        # 'PORT': int(
+        #     os.environ.get('DJANGO_MYSQL_PORT') or 3306),
+        # 'OPTIONS': {
+        #     'charset': 'utf8mb4'},
+        'ENGINE': 'mssql',
+        'NAME': 'djangoblog',
+        'HOST': 'HTFHSITD1024141\\SQLEXPRESS',
+        'USER': 'admin',
+        'PASSWORD': 'p@ss4admin',
+        'PORT': '',
         'OPTIONS': {
-            'charset': 'utf8mb4'},
+            'driver': 'ODBC Driver 17 for SQL Server',
+            # 'trusted_connection': 'True',
+            # 'unicode_results': True,
+            # 'host_is_server': True,
+        }
     }}
 
 # Password validation
@@ -189,8 +201,7 @@ CACHES = {
 }
 
 SITE_ID = 1
-BAIDU_NOTIFY_URL = os.environ.get('DJANGO_BAIDU_NOTIFY_URL') \
-                   or 'http://data.zz.baidu.com/urls?site=https://www.lylinux.net&token=1uAOGrMsUm5syDGn'
+BAIDU_NOTIFY_URL = os.environ.get('DJANGO_BAIDU_NOTIFY_URL') or 'http://data.zz.baidu.com/urls?site=https://www.lylinux.net&token=1uAOGrMsUm5syDGn'
 
 # Email:
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
